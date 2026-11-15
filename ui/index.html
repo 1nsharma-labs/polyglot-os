@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polyglot-OS — Universal 50+ Programming Languages Matrix & Transpiler</title>
+  <meta name="description" content="Polyglot-OS: Explore, compare, and translate syntax patterns across 50+ programming languages, systems paradigms, and Indic computing models.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06080e;
+      --card: #0c111c;
+      --subtle: #141b2c;
+      --border: #1e283d;
+      --text: #f0f4fc;
+      --muted: #8b9cb5;
+      --purple: #c084fc;
+      --cyan: #00f0ff;
+      --green: #10b981;
+      --saffron: #ff8b3d;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.5; padding: 0 16px; }
+    .container { max-width: 1260px; margin: 0 auto; }
+
+    header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; }
+    .brand-logo { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--purple), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #000; }
+
+    .sponsor-bar {
+      margin-top: 14px;
+      padding: 10px 16px;
+      background: linear-gradient(90deg, rgba(192,132,252,0.1), rgba(0,240,255,0.08));
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .sponsor-bar a { color: var(--purple); text-decoration: none; font-weight: 600; }
+
+    .hero { padding: 40px 0 24px; text-align: center; }
+    .hero h1 { font-size: 44px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .gradient-text { background: linear-gradient(135deg, #ffffff 40%, var(--purple) 80%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); font-size: 16px; max-width: 680px; margin: 0 auto 24px; }
+
+    .search-row { max-width: 500px; margin: 0 auto 30px; }
+    .search-ctrl { width: 100%; padding: 12px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 30px; color: var(--text); font-family: var(--font); font-size: 14px; outline: none; }
+    .search-ctrl:focus { border-color: var(--purple); }
+
+    /* Layout */
+    .grid-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 50px; }
+    .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 580px; overflow-y: auto; padding-right: 6px; }
+
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; cursor: pointer; transition: all 0.2s; }
+    .lang-card:hover { border-color: var(--purple); background: var(--subtle); }
+    .lang-card.active { border-color: var(--purple); background: rgba(192,132,252,0.08); }
+    .lang-head { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .lang-sub { font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
+
+    /* Detail Inspector */
+    .detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .spec-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; border-bottom: 1px dashed var(--border); padding-bottom: 6px; }
+    pre { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-family: var(--mono); font-size: 12px; color: #a5b4fc; overflow-x: auto; margin-top: 14px; }
+
+    footer { border-top: 1px solid var(--border); margin-top: 60px; padding: 30px 0 50px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; }
+
+    @media (max-width: 900px) {
+      .grid-layout { grid-template-columns: 1fr; }
+      .lang-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="brand-logo">🌐</div>
+          <div>Polyglot-OS <span style="font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; background:rgba(192,132,252,0.15); color:var(--purple);">50+ Languages</span></div>
+        </div>
+        <a href="https://github.com/1nsharma-labs/polyglot-os" target="_blank" style="color:var(--text); text-decoration:none; font-size:14px; font-weight:600;">GitHub Repository &rarr;</a>
+      </div>
+
+      <div class="sponsor-bar">
+        <div>
+          📢 <strong>Sponsorship Slot Open:</strong> Reach 75,000+ Software Engineers & Polyglot Architects.
+        </div>
+        <a href="mailto:amitsharma9976@gmail.com?subject=Sponsor%20Polyglot-OS">Book Slot &rarr;</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>
+        Universal 50+ Languages <br>
+        <span class="gradient-text">Matrix & Syntax Idiom Transpiler</span>
+      </h1>
+      <p>
+        Compare paradigms, execution targets, memory models & zero-token syntax patterns across modern, systems, web3 & Indic languages.
+      </p>
+
+      <div class="search-row">
+        <input type="text" id="searchInput" class="search-ctrl" placeholder="Search languages (e.g. rust, functional, static, evm)..." oninput="filterLangs()">
+      </div>
+    </section>
+
+    <div class="grid-layout">
+      <!-- Grid -->
+      <div class="lang-grid" id="langGrid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Detail Panel -->
+      <div class="detail-card">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <span style="font-size:28px;" id="dispIcon">🦀</span>
+          <div>
+            <h3 style="font-size:20px; font-weight:800;" id="dispName">Rust</h3>
+            <span style="font-size:11px; color:var(--purple); font-family:var(--mono);" id="dispId">rust</span>
+          </div>
+        </div>
+
+        <div class="spec-row"><span>Paradigm:</span><strong id="dispParadigm">Systems, Functional</strong></div>
+        <div class="spec-row"><span>Type System:</span><strong id="dispTyping">Static, Inferred</strong></div>
+        <div class="spec-row"><span>Memory / GC:</span><strong id="dispMemory">Borrow Checker / RAII</strong></div>
+        <div class="spec-row"><span>Compile Target:</span><strong id="dispTarget">Native Machine Code</strong></div>
+        <div class="spec-row"><span>Speed Rank:</span><strong style="color:var(--green);" id="dispSpeed">Rank 1 / 10</strong></div>
+
+        <h4 style="font-size:13px; margin-top:16px; color:var(--muted);">Universal Function Definition Idiom:</h4>
+        <pre><code id="dispCode">fn calculate_sum(a: i32, b: i32) -> i32 {
+    a + b
+}</code></pre>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        ⚡ <strong>Polyglot-OS</strong> &bull; Conceived & built by <strong>Amit Sharma (@1nsharma)</strong> in Kanpur, India
+      </div>
+      <div>
+        Direct UPI: <strong style="color:var(--purple); font-family:var(--mono);">6393741171@upi</strong> | Email: <a href="mailto:amitsharma9976@gmail.com" style="color:var(--cyan); text-decoration:none;">amitsharma9976@gmail.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const languages = [
+      { id: 'rust', name: 'Rust', icon: '🦀', paradigm: 'Systems, Functional', typing: 'Static, Inferred', memory: 'Borrow Checker / RAII', target: 'Native Machine Code', speed: 'Rank 1 / 10', code: 'fn calculate_sum(a: i32, b: i32) -> i32 {\n    a + b\n}' },
+      { id: 'python', name: 'Python', icon: '🐍', paradigm: 'Multi-paradigm', typing: 'Dynamic', memory: 'Garbage Collected', target: 'Bytecode / CPython', speed: 'Rank 8 / 10', code: 'def calculate_sum(a: int, b: int) -> int:\n    return a + b' },
+      { id: 'typescript', name: 'TypeScript', icon: '🔷', paradigm: 'Static Typed JS', typing: 'Static (compile-time)', memory: 'Garbage Collected', target: 'JavaScript', speed: 'Rank 6 / 10', code: 'function calculateSum(a: number, b: number): number {\n  return a + b;\n}' },
+      { id: 'golang', name: 'Go', icon: '🐹', paradigm: 'Concurrent, Imperative', typing: 'Static', memory: 'Concurrent GC', target: 'Native Machine Code', speed: 'Rank 3 / 10', code: 'func calculateSum(a int, b int) int {\n    return a + b\n}' },
+      { id: 'cpp', name: 'C++', icon: '⚡', paradigm: 'Multi-paradigm, Systems', typing: 'Static', memory: 'Manual / Smart Pointers', target: 'Native Machine Code', speed: 'Rank 1 / 10', code: 'int calculateSum(int a, int b) {\n    return a + b;\n}' },
+      { id: 'mojo', name: 'Mojo', icon: '🔥', paradigm: 'AI & Systems', typing: 'Static', memory: 'ASAP / Ownership', target: 'MLIR / Native', speed: 'Rank 1 / 10', code: 'fn calculate_sum(a: Int, b: Int) -> Int:\n    return a + b' },
+      { id: 'zig', name: 'Zig', icon: '⚡', paradigm: 'Robust Systems', typing: 'Static', memory: 'Manual (No Hidden Allocs)', target: 'Native Machine Code', speed: 'Rank 1 / 10', code: 'pub fn calculateSum(a: i32, b: i32) i32 {\n    return a + b;\n}' },
+      { id: 'solidity', name: 'Solidity', icon: '💎', paradigm: 'Smart Contracts', typing: 'Static', memory: 'EVM Memory / Storage', target: 'EVM Bytecode', speed: 'Rank 7 / 10', code: 'function calculateSum(uint256 a, uint256 b) public pure returns (uint256) {\n    return a + b;\n}' },
+      { id: 'indic', name: 'Indic Devanagari', icon: '🇮🇳', paradigm: 'Vernacular Pseudo-code', typing: 'Static / Schema', memory: 'Deterministic', target: 'Native Translation', speed: 'Universal', code: 'कार्य जोड़_संख्या(पहला: पूर्णांक, दूसरा: पूर्णांक): पूर्णांक {\n    वापसी पहला + दूसरा;\n}' }
+    ];
+
+    let current = 0;
+
+    function renderLangs(list) {
+      const g = document.getElementById('langGrid');
+      g.innerHTML = list.map((l, idx) => `
+        <div class="lang-card ${idx === current ? 'active' : ''}" onclick="selectLang(${idx})">
+          <div class="lang-head">
+            <span>${l.icon}</span>
+            <span>${l.name}</span>
+          </div>
+          <div class="lang-sub">
+            <span>${l.typing}</span>
+            <span style="color:var(--purple);">${l.speed}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectLang(idx) {
+      current = idx;
+      const l = languages[idx];
+      document.getElementById('dispIcon').innerText = l.icon;
+      document.getElementById('dispName').innerText = l.name;
+      document.getElementById('dispId').innerText = l.id;
+      document.getElementById('dispParadigm').innerText = l.paradigm;
+      document.getElementById('dispTyping').innerText = l.typing;
+      document.getElementById('dispMemory').innerText = l.memory;
+      document.getElementById('dispTarget').innerText = l.target;
+      document.getElementById('dispSpeed').innerText = l.speed;
+      document.getElementById('dispCode').innerText = l.code;
+      renderLangs(languages);
+    }
+
+    function filterLangs() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = languages.filter(l => l.name.toLowerCase().includes(q) || l.paradigm.toLowerCase().includes(q) || l.typing.toLowerCase().includes(q));
+      renderLangs(filtered);
+    }
+
+    selectLang(0);
+  </script>
+</body>
+</html>

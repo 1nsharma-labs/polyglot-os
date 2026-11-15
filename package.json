@@ -1,0 +1,42 @@
+{
+  "name": "polyglot-os",
+  "version": "1.0.0",
+  "description": "Universal 50+ Programming Languages Matrix & Transpiler — Compare paradigms, execution targets, memory models & zero-token syntax patterns",
+  "type": "module",
+  "main": "core/src/matrix.js",
+  "bin": {
+    "polyglot-os": "./cli/bin/polyglot.js"
+  },
+  "scripts": {
+    "start": "node cli/bin/polyglot.js status",
+    "test": "node --test test/test_polyglot.js",
+    "mcp": "node core/src/mcp/server.js"
+  },
+  "keywords": [
+    "polyglot",
+    "programming-languages",
+    "compilers",
+    "rust",
+    "python",
+    "golang",
+    "typescript",
+    "mcp-server"
+  ],
+  "author": "Amit Sharma <amitsharma9976@gmail.com> (https://github.com/1nsharma)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1nsharma-labs/polyglot-os.git"
+  },
+  "homepage": "https://1nsharma-labs.github.io/polyglot-os/",
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://polar.sh/1nsharma-labs"
+    },
+    {
+      "type": "upi",
+      "url": "upi://pay?pa=6393741171@upi&pn=Amit%20Sharma"
+    }
+  ]
+}
